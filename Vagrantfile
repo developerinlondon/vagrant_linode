@@ -20,4 +20,12 @@ Vagrant.configure('2') do |config|
     # provider.stackscriptid = <int> # Not Supported Yet
     # provider.distributionid = <int>
   end
+
+  config.vm.synced_folder "salt/roots/", "/srv/salt/"
+
+  config.vm.provision :salt do |salt|
+    salt.minion_config = "salt/minion.conf"
+    salt.run_highstate = true
+
+  end
 end

@@ -8,6 +8,7 @@ Vagrant.configure('2') do |config|
     provider.distribution = 'Ubuntu 16.04 LTS'
     provider.datacenter = 'frankfurt'
     provider.plan = 'Linode 1024'
+    provider.label = 'core-server-saltstack'
     # provider.planid = <int>
     # provider.paymentterm = <*1*,12,24>
     # provider.datacenterid = <int>
@@ -22,6 +23,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.synced_folder "salt/roots/", "/srv/salt/"
+  config.vm.hostname = 'core-server-saltstack'
 
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 

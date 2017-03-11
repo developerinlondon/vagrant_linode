@@ -1,4 +1,6 @@
 Vagrant.configure('2') do |config|
+  
+  config.vm.define "core-server-saltstack"
 
   config.vm.provider :linode do |provider, override|
     override.ssh.private_key_path = '~/.ssh/id_rsa'

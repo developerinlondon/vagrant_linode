@@ -23,9 +23,12 @@ Vagrant.configure('2') do |config|
 
   config.vm.synced_folder "salt/roots/", "/srv/salt/"
 
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
+  config.vm.provision "install-salt", type: :shell, inline: "apt-get install -y salt-api salt-cloud salt-master  salt-minion salt-ssh salt-syndic"
+ 
   config.vm.provision :salt do |salt|
     salt.minion_config = "salt/minion.conf"
     salt.run_highstate = true
-
   end
 end

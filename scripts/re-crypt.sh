@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-git commit -a -m "Remove encrypted files"
+git crypt unlock
 rm -rf .git-crypt
-git commit -a -m "Remove git-crypt"
 rm -rf .git/git-crypt
+git commit -a -m "Remove git-crypt"
 
 git crypt init
 

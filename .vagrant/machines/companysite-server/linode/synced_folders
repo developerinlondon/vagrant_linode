@@ -1,0 +1,1 @@
+{"rsync":{"/srv/salt/":{"guestpath":"/srv/salt","hostpath":"/Users/nsm/Documents/code/sds/coreserver/vagrant-linode/salt/roots","disabled":false,"__vagrantfile":true,"owner":"root","group":"root"},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/nsm/Documents/code/sds/coreserver/vagrant-linode","disabled":false,"__vagrantfile":true,"owner":"root","group":"root"}}}

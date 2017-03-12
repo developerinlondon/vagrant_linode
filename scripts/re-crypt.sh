@@ -12,3 +12,4 @@ while read p; do
 done <.gpgusers
 
 git crypt lock
+git crypt unlock

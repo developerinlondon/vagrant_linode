@@ -25,12 +25,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       provider.group = server['group']
     end
 
-    config.vm.synced_folder server['synced_folder_src'], server['synced_folder_dest']
+    server['synced_folders'].each do |synced_folder|
+      config.vm.synced_folder synced_folder['src'], synced_folder['dest']
+    end
     config.vm.hostname = server['hostname']
 
     config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
 
-    config.vm.provision server['install_script'], type: :shell, inline: server['install_script_content']
+    config.vm.provision server['install_script'], type: :shell, path: "userdata/#{server['name']}.sh"
    
     config.vm.provision :salt do |salt|
       salt.minion_config = server['salt_minion_config']

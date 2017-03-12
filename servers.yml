@@ -7,9 +7,8 @@
   plan: 'Linode 1024'
   label: core-server-saltstack
   group: vagrant
-  synced_folder_src: salt/roots/
-  synced_folder_dest: /srv/salt/
-  install_script: install-salt
-  install_script_content: "apt-get install -y salt-api salt-cloud salt-master  salt-minion salt-ssh salt-syndic"
+  synced_folders:
+    - src: salt/roots/
+      dest: /srv/salt/
   salt_minion_config: salt/minion.conf
   salt_run_highstate: true

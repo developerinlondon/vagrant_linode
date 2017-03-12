@@ -9,7 +9,6 @@ servers = YAML.load_file(File.join(File.dirname(__FILE__), 'servers.yml'))
 secrets = YAML.load_file(File.join(File.dirname(__FILE__), 'secrets.yml'))
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # Iterate through entries in YAML file
   servers.each do |server|
 
     config.vm.define server["name"]
@@ -24,17 +23,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       provider.plan = server['plan']
       provider.label = server['label']
       provider.group = server['group']
-      # provider.planid = <int>
-      # provider.paymentterm = <*1*,12,24>
-      # provider.datacenterid = <int>
-      # provider.image = <string>
-      # provider.imageid = <int>
-      # provider.kernel = <string>
-      # provider.kernelid = <int>
-      # provider.private_networking = <boolean>
-      # provider.stackscript = <string> # Not Supported Yet
-      # provider.stackscriptid = <int> # Not Supported Yet
-      # provider.distributionid = <int>
     end
 
     config.vm.synced_folder server['synced_folder_src'], server['synced_folder_dest']

@@ -14,3 +14,7 @@ Install git-crypt:
 
 Unlock:
 `git-crypt unlock`
+
+To add a new user's gpg:
+1. make sure the user's gpg key is alreaady imported in the machine
+2. run `git-crypt add-gpg-user --trusted <email>`

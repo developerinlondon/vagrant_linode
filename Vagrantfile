@@ -1,39 +1,53 @@
-Vagrant.configure('2') do |config|
-  
-  config.vm.define "core-server-saltstack"
+# -*- mode: ruby -*-
+# # vi: set ft=ruby :
+Vagrant.require_version ">= 1.6.0"
+VAGRANTFILE_API_VERSION = "2"
 
-  config.vm.provider :linode do |provider, override|
-    override.ssh.private_key_path = './.ssh/id_rsa.key'
-    override.vm.box = 'linode/ubuntu1404'
+require 'yaml'
 
-    provider.api_key = '93fLktcDjou7wcCTXjXJnIJxmHWDorJtwMREnKKFwJeqqIaLuvBeYBwQ1988Dy4B'
-    provider.distribution = 'Ubuntu 16.04 LTS'
-    provider.datacenter = 'frankfurt'
-    provider.plan = 'Linode 1024'
-    provider.label = 'core-server-saltstack'
-    provider.group = 'vagrant'
-    # provider.planid = <int>
-    # provider.paymentterm = <*1*,12,24>
-    # provider.datacenterid = <int>
-    # provider.image = <string>
-    # provider.imageid = <int>
-    # provider.kernel = <string>
-    # provider.kernelid = <int>
-    # provider.private_networking = <boolean>
-    # provider.stackscript = <string> # Not Supported Yet
-    # provider.stackscriptid = <int> # Not Supported Yet
-    # provider.distributionid = <int>
-  end
+servers = YAML.load_file(File.join(File.dirname(__FILE__), 'servers.yml'))
+secrets = YAML.load_file(File.join(File.dirname(__FILE__), 'secrets.yml'))
 
-  config.vm.synced_folder "salt/roots/", "/srv/salt/"
-  config.vm.hostname = 'core-server-saltstack'
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # Iterate through entries in YAML file
+  servers.each do |server|
 
-  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+    config.vm.define server["name"]
 
-  config.vm.provision "install-salt", type: :shell, inline: "apt-get install -y salt-api salt-cloud salt-master  salt-minion salt-ssh salt-syndic"
- 
-  config.vm.provision :salt do |salt|
-    salt.minion_config = "salt/minion.conf"
-    salt.run_highstate = true
+    config.vm.provider :linode do |provider, override|
+      override.ssh.private_key_path = server['private_key_path']
+      override.vm.box = 'linode/ubuntu1404'
+
+      provider.api_key = secrets[server['name']]['api_key']
+      provider.distribution = server['distribution']
+      provider.datacenter = server['datacenter']
+      provider.plan = server['plan']
+      provider.label = server['label']
+      provider.group = server['group']
+      # provider.planid = <int>
+      # provider.paymentterm = <*1*,12,24>
+      # provider.datacenterid = <int>
+      # provider.image = <string>
+      # provider.imageid = <int>
+      # provider.kernel = <string>
+      # provider.kernelid = <int>
+      # provider.private_networking = <boolean>
+      # provider.stackscript = <string> # Not Supported Yet
+      # provider.stackscriptid = <int> # Not Supported Yet
+      # provider.distributionid = <int>
+    end
+
+    config.vm.synced_folder server['synced_folder_src'], server['synced_folder_dest']
+    config.vm.hostname = server['hostname']
+
+    config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
+
+    config.vm.provision server['install_script'], type: :shell, inline: server['install_script_content']
+   
+    config.vm.provision :salt do |salt|
+      salt.minion_config = server['salt_minion_config']
+      salt.run_highstate = server['salt_run_highstate']
+    end
+
   end
 end

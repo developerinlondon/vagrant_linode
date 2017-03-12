@@ -8,3 +8,9 @@ For Linode -
 
 For Saltstack -
 `vagrant plugin install vagrant-salt`
+
+Install git-crypt:
+`brew install git-crypt`
+
+Unlock:
+`git-crypt unlock`

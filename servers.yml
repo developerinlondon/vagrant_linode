@@ -1,12 +1,10 @@
 ---
-- name: core-server-saltstack
-  hostname: core-server-saltstack
-  private_key_path: ./.ssh/id_rsa.key
+- name: companysite-server
+  group: companysite-servers
   distribution: 'Ubuntu 16.04 LTS'
   datacenter: frankfurt
   plan: 'Linode 1024'
-  label: core-server-saltstack
-  group: vagrant
+  private_key_path: ./.ssh/id_rsa.key
   synced_folders:
     - src: salt/roots/
       dest: /srv/salt/

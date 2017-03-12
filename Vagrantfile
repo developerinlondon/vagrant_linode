@@ -21,14 +21,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       provider.distribution = server['distribution']
       provider.datacenter = server['datacenter']
       provider.plan = server['plan']
-      provider.label = server['label']
+      provider.label = server['name']
       provider.group = server['group']
     end
 
     server['synced_folders'].each do |synced_folder|
       config.vm.synced_folder synced_folder['src'], synced_folder['dest']
     end
-    config.vm.hostname = server['hostname']
+    config.vm.hostname = server['name']
 
     config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
 

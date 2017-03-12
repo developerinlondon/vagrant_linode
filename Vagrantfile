@@ -38,6 +38,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision :salt do |salt|
       salt.minion_config = "configs/#{servername}/minion.conf"
       salt.run_highstate = serverconfig['salt_run_highstate']
+      salt.masterless = serverconfig['salt_masterless']
+      salt.install_master = serverconfig['salt_install_master']
+      salt.log_level = serverconfig['salt_log_level']
+      salt.verbose = serverconfig['salt_verbose']
+      salt.colorize = serverconfig['salt_colorize']
     end
 
   end

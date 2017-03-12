@@ -1,0 +1,4 @@
+base:
+  '*':
+    - common
+#  'companysite-server':

@@ -21,7 +21,7 @@
 # Based on https://github.com/AGWA/git-crypt/issues/47#issuecomment-212734882
 #
 #
-set -ex
+set -e
 
 if [ -z "$1" ]
 then

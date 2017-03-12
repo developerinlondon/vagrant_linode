@@ -66,7 +66,7 @@ for keyfilename in $CURRENT_DIR/.git-crypt/keys/default/0/*gpg; do
         continue;
     fi
     set +x
-    git crypt add-gpg-user $key
+    git crypt add-gpg-user --trusted $key
 done
 
 cd $CURRENT_DIR

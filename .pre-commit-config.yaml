@@ -2,7 +2,7 @@
   hooks:
   - id: salt-lint
     name: salt-lint
-    entry: scripts/salt-lint.sh
+    entry: salt-lint --no-check-line-length -f
     language: system
     files: \.sls$
 - repo: git://github.com/pre-commit/pre-commit-hooks

@@ -1,17 +1,17 @@
 ---
-companysite-server:
-  group: companysite-group
-  distribution: 'Ubuntu 16.04 LTS'
-  datacenter: frankfurt
-  plan: 'Linode 1024'
-  private_key_path: ./.ssh/id_rsa.key
-  synced_folders:
-    - src: saltstack
-      dest: /saltstack/
-  salt_minion_config: salt/minion.conf
-  salt_run_highstate: true
-  salt_masterless: true
-  salt_install_master: false
-  salt_log_level: info
-  salt_verbose: true
-  salt_colorize: true
+companysite-group:
+  companysite-server:
+    distribution: 'Ubuntu 16.04 LTS'
+    datacenter: frankfurt
+    plan: 'Linode 1024'
+    private_key_path: ./.ssh/id_rsa.key
+    synced_folders:
+      - src: saltstack
+        dest: /saltstack/
+    salt_minion_config: salt/minion.conf
+    salt_run_highstate: true
+    salt_masterless: true
+    salt_install_master: false
+    salt_log_level: info
+    salt_verbose: true
+    salt_colorize: true

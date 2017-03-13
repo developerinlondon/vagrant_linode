@@ -1,11 +1,13 @@
--   repo: git://github.com/pre-commit/pre-commit-hooks
-    sha: 5da199bb8d60f764c0f77a20b0a1dc3a7640bcdd
-    hooks:
-    -   id: trailing-whitespace
-        files: \.(js|rb|md|py|sh|txt|yaml|yml)$
--   repo: git://github.com/detailyang/pre-commit-shell
-    sha: 1fdffa0434cde2b87f19ad258201d3e81481af5f
-    hooks:
-    -   id: shell-lint
-        args:
-        - --shell=bash
+- repo: git://github.com/pre-commit/pre-commit-hooks
+  sha: 5da199bb8d60f764c0f77a20b0a1dc3a7640bcdd
+  hooks:
+  - id: trailing-whitespace
+    files: \.(js|rb|md|py|sh|txt|yaml|yml)$
+  - id: check-yaml
+    files: \.(yml|yaml)$
+- repo: git://github.com/detailyang/pre-commit-shell
+  sha: 1fdffa0434cde2b87f19ad258201d3e81481af5f
+  hooks:
+  - id: shell-lint
+    args:
+    - --shell=bash

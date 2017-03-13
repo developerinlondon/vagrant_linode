@@ -64,6 +64,13 @@ the current state of sls files on each commit.
 To check all sls files run:
 `salt-lint --no-check-line-length  --scan=.`
 
+Shell Lint
+----------
+shell-lint checks the validity and best practices of shell scripts.
+Its run on every commit automatically.
+It can be invoked directly like this if you need to manually check:
+`shell-lint <scriptname>.sh`
+
 Sublime Configuration
 ---------------------
 Install Package Control from here - https://packagecontrol.io/installation

@@ -4,7 +4,7 @@
   - id: salt-lint
     name: salt-lint
     entry: salt-lint --no-check-line-length -f
-    language: system
+    language: ruby
     files: \.sls$
 - repo: git://github.com/pre-commit/pre-commit-hooks
   sha: 5da199bb8d60f764c0f77a20b0a1dc3a7640bcdd

@@ -29,4 +29,4 @@ update-bashrc-domain:
      - name: /root/.bashrc
      {% endif %}
      - text: |
-     PS1='\[\033[01;{{ grains['prompt_color'] }}m\]\u@\h.\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ '
+         PS1='\[\033[01;{{ grains['prompt_color'] }}m\]\u@\h.\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ '

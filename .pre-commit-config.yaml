@@ -1,4 +1,5 @@
-- repo: local
+- repo: git://github.com/developerinlondon/salt-lint-ruby.git
+  sha: 5e61f371ceb00cb54870ddfe5eb72214758acc47
   hooks:
   - id: salt-lint
     name: salt-lint

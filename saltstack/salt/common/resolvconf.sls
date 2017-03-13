@@ -1,5 +1,5 @@
 add-domain-to-resolv-conf:
   file.append:
     - name: /etc/resolv.conf
-    - text: 
+    - text:
       - "#search BLABLA"

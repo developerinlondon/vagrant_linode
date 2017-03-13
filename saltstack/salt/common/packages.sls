@@ -1,7 +1,7 @@
 /etc/vimrc:
   file.managed:
     - source: salt://common/vimrc
-    - mode: 644
+    - mode: '0644'
     - user: root
     - group: root
 

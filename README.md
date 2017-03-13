@@ -55,3 +55,11 @@ To enable pre-commits run:
 Details of pre-commits can be found here:
 http://pre-commit.com
 https://github.com/pre-commit/pre-commit-hooks
+
+Salt Lint
+---------
+
+Run 'bundle' and it will install a tool called 'salt-lint', this can check
+the current state of sls files on each commit.
+To check all sls files run:
+`salt-lint --no-check-line-length  --scan=.`

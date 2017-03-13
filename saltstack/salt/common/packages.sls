@@ -5,6 +5,7 @@
     - user: root
     - group: root
 
+# common packages
 common_packages:
   pkg.installed:
     - names: {{ pillar['packages'] }}

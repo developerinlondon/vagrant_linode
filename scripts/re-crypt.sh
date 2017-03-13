@@ -51,13 +51,14 @@ done <.gpgusers
 
 
 cd "$CURRENT_DIR"
-for i in $(awk '{print $2}' ${TMPDIR}/${BASENAME}/encrypted-files); do
-    rsync -R $i "$TMPDIR/$BASENAME";
-done
+while read -r i; do
+    rsync -R "$i" "$TMPDIR/$BASENAME";
+done < <(awk '{print $2}' "${TMPDIR}/${BASENAME}/encrypted-files")
+
 cd "$TMPDIR/$BASENAME"
-for i in $(awk '{print $2}' encrypted-files); do
-    git add $i
-done
+while read -r i; do
+    git add "$i"
+done < <(awk '{print $2}' encrypted-files)
 git commit -a -m "New encrypted files"
 popd
 

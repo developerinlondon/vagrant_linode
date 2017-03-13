@@ -10,7 +10,7 @@ servergroups = YAML.load_file(File.join(File.dirname(__FILE__), 'servers.yml'))
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   servergroups.each do |servergroup, servers|
     servers.each do |servername, serverconfig|
-      secrets = YAML.load_file(File.join(File.dirname(__FILE__),"configs/#{servername}/secrets.yml"))
+      secrets = YAML.load_file(File.join(File.dirname(__FILE__),"configs/#{servergroup}/#{servername}/secrets.yml"))
 
       config.vm.define servername
 
@@ -33,10 +33,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
 
-      config.vm.provision "initialize", type: :shell, path: "configs/#{servername}/userdata.sh"
+      config.vm.provision "initialize", type: :shell, path: "configs/#{servergroup}/#{servername}/userdata.sh"
      
       config.vm.provision :salt do |salt|
-        salt.minion_config = "configs/#{servername}/minion.conf"
+        salt.minion_config = "configs/#{servergroup}/#{servername}/minion.conf"
         salt.run_highstate = serverconfig['salt_run_highstate']
         salt.masterless = serverconfig['salt_masterless']
         salt.install_master = serverconfig['salt_install_master']

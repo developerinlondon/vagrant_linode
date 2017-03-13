@@ -45,6 +45,7 @@ rm -rf .git/git-crypt
 # Re-initialize git crypt
 git crypt init
 
+# add the keys in
 while read -r p; do
   git crypt add-gpg-user --trusted "$p"
 done <.gpgusers

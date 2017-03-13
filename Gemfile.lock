@@ -1,0 +1,25 @@
+GIT
+  remote: git://github.com/developerinlondon/salt-lint-ruby.git
+  revision: 1b0603429f91e1fbc01ee0d589e208a5ee87b62a
+  specs:
+    salt-lint (0.1.5.2)
+      awesome_print (~> 1.2.0, >= 1.2.0)
+      bundler (~> 1.5)
+      colorize (~> 0.8.1)
+      trollop (>= 2.1.2, = 2.1.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    awesome_print (1.2.0)
+    colorize (0.8.1)
+    trollop (2.1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  salt-lint!
+
+BUNDLED WITH
+   1.14.5

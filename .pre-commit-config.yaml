@@ -1,61 +1,24 @@
-- repo: git://github.com/developerinlondon/salt-lint-ruby
-  sha: 42d39df5ee68cc9d8da1ca4489121a9b1585ad18
+- repo: local
   hooks:
   - id: salt-lint
-    name: Salt Lint
-    description: Lint Salt files
-    entry: salt-lint
-    language: ruby
-    files: \.(sls)$
+    name: salt-lint
+    entry: scripts/salt-lint.sh
+    language: system
+    files: \.sls$
 - repo: git://github.com/pre-commit/pre-commit-hooks
   sha: 5da199bb8d60f764c0f77a20b0a1dc3a7640bcdd
   hooks:
   - id: trailing-whitespace
     files: \.(js|rb|md|py|sh|txt|yaml|yml|sls|conf)$
   - id: check-yaml
-    name: Check Yaml
-    description: This hook checks yaml files for parseable syntax.
-    entry: check-yaml
-    language: python
-    files: \.(yaml|yml|eyaml)$
   - id: end-of-file-fixer
-    name: Fix End of Files
-    description: Ensures that a file is either empty, or ends with one newline.
-    entry: end-of-file-fixer
-    language: python
     files: \.(asciidoc|adoc|conf|coffee|cpp|css|c|ejs|erb|groovy|h|haml|hh|hpp|hxx|html|in|j2|jade|json|js|less|markdown|md|ml|mli|pp|py|rb|rs|R|scala|scss|sh|slim|sls|tex|tmpl|ts|txt|yaml|yml)$
   - id: trailing-whitespace
-    name: Trim Trailing Whitespace
-    description: This hook trims trailing whitespace.
-    entry: trailing-whitespace-fixer
-    language: python
     files: \.(asciidoc|adoc|conf|coffee|cpp|css|c|ejs|erb|groovy|h|haml|hh|hpp|hxx|html|in|j2|jade|json|js|less|markdown|md|ml|mli|pp|py|rb|rs|R|scala|scss|sh|slim|sls|tex|tmpl|ts|txt|yaml|yml)$
   - id: check-added-large-files
-    name: Check for added large files
-    description: Prevent giant files from being committed
-    entry: check-added-large-files
-    language: python
-    files: ''
   - id: check-merge-conflict
-    name: Check for merge conflicts
-    description: Check for files that contain merge conflict strings.
-    entry: check-merge-conflict
-    language: python
-    # Match all files
-    files: ''
   - id: check-symlinks
-    name: Check for broken symlinks
-    description: Checks for symlinks which do not point to anything.
-    entry: check-symlinks
-    language: python
-    # Match all files
-    files: ''
   - id: detect-private-key
-    name: Detect Private Key
-    description: Detects the presence of private keys
-    entry: detect-private-key
-    language: python
-    files: ''
 - repo: git://github.com/detailyang/pre-commit-shell
   sha: 1fdffa0434cde2b87f19ad258201d3e81481af5f
   hooks:

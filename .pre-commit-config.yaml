@@ -1,3 +1,12 @@
+- repo: git://github.com/developerinlondon/salt-lint-ruby
+  sha: 42d39df5ee68cc9d8da1ca4489121a9b1585ad18
+  hooks:
+  - id: salt-lint
+    name: Salt Lint
+    description: Lint Salt files
+    entry: salt-lint
+    language: ruby
+    files: \.(sls)$
 - repo: git://github.com/pre-commit/pre-commit-hooks
   sha: 5da199bb8d60f764c0f77a20b0a1dc3a7640bcdd
   hooks:

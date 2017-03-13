@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/developerinlondon/salt-lint-ruby.git
-  revision: b6d724f1865fea3bbe3b97afe5a1951eb7014e98
-  tag: v0.1.3
+  revision: 5e61f371ceb00cb54870ddfe5eb72214758acc47
+  tag: v0.1.5
   specs:
     salt-lint (0.1.5.2)
       awesome_print (~> 1.2.0, >= 1.2.0)

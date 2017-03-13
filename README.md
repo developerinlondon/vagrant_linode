@@ -63,3 +63,9 @@ Run 'bundle' and it will install a tool called 'salt-lint', this can check
 the current state of sls files on each commit.
 To check all sls files run:
 `salt-lint --no-check-line-length  --scan=.`
+
+Sublime Configuration
+---------------------
+Install Package Control from here - https://packagecontrol.io/installation
+
+then the salt extension can be added - https://github.com/saltstack/sublime-text

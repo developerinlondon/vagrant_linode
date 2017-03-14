@@ -7,7 +7,7 @@
     language: ruby
     files: \.sls$
 - repo: git://github.com/pre-commit/pre-commit-hooks
-  sha: 5da199bb8d60f764c0f77a20b0a1dc3a7640bcdd
+  sha: c847dd3f2e7260830b6fc66a6a3ed7a837e3bdb1
   hooks:
   - id: check-yaml
   - id: end-of-file-fixer

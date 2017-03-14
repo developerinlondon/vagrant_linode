@@ -1,6 +1,6 @@
 ---
-production-web:
-  company-webserver:
+sds.production:
+  webserver:
     distribution: 'Ubuntu 16.04 LTS'
     datacenter: frankfurt
     plan: 'Linode 1024'

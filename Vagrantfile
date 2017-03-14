@@ -42,10 +42,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # mount any synced folders
       unless serverconfig['synced_folders'].nil?
         serverconfig['synced_folders'].each do |synced_folder|
-          config.vm.synced_folder synced_folder['src'], synced_folder['dest']
+          config.vm.synced_folder synced_folder['src'], synced_folder['dest'], disabled: synced_folder['disabled']
         end
       end
-      
+
       config.vm.hostname = "#{servername}.#{servergroup}"
 
       config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS

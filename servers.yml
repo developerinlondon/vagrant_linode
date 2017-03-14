@@ -5,9 +5,10 @@ live:
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: ./.ssh/id_rsa.key
-    # synced_folders:
-    # - src: saltstack
-    #   dest: /saltstacksrv/
+    synced_folders:
+    - src: .
+      dest: /vagrant
+      disabled: true
     git_repos:
     - target: git@bitbucket.org:sdsgmbh/saltstack.git
       path: /saltstack

@@ -9,10 +9,13 @@ live:
     - src: .
       dest: /vagrant
       disabled: true
-    git_repos:
-    - target: git@bitbucket.org:sdsgmbh/saltstack.git
-      path: /saltstack
-      branch: master
+    - src: saltstack
+      dest: /saltstack
+      disabled: false
+    # git_repos:
+    # - target: git@bitbucket.org:sdsgmbh/saltstack.git
+    #   path: /saltstack
+    #   branch: master
     salt_run_highstate: true
     salt_masterless: true
     salt_install_master: false

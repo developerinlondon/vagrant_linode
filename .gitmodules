@@ -1,0 +1,3 @@
+[submodule "saltstack"]
+	path = saltstack
+	url = git@bitbucket.org:sdsgmbh/saltstack.git

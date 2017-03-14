@@ -30,10 +30,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.synced_folder synced_folder['src'], synced_folder['dest']
       end
       config.vm.hostname = "#{servername}.#{servergroup}"
-      config.hostsupdater.aliases = ["#{servername}.#{servergroup}", "#{servername}"]
+      config.vm.provision "fix_hostname", type: :shell, inline: "sed -i -e 's/127.0.0.1\slocalhost$/127.0.0.1 localhost #{servername}.#{servergroup} #{servername}/g' /etc/hosts"
 
       config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
-
       config.vm.provision "initialize", type: :shell, path: "configs/#{servergroup}/#{servername}/userdata.sh"
      
       config.vm.provision :salt do |salt|

@@ -1,6 +1,6 @@
 ---
-live.sds:
-  web:
+live:
+  web.sds:
     distribution: 'Ubuntu 16.04 LTS'
     datacenter: frankfurt
     plan: 'Linode 1024'
@@ -15,3 +15,5 @@ live.sds:
     salt_log_level: info
     salt_verbose: true
     salt_colorize: true
+    ip: '172.21.9.9'
+    netmask: '255.255.240.0'

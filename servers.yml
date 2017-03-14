@@ -1,6 +1,6 @@
 ---
-sds.production:
-  webserver:
+live.sds:
+  web:
     distribution: 'Ubuntu 16.04 LTS'
     datacenter: frankfurt
     plan: 'Linode 1024'

@@ -76,3 +76,10 @@ Sublime Configuration
 Install Package Control from here - https://packagecontrol.io/installation
 
 then the salt extension can be added - https://github.com/saltstack/sublime-text
+
+
+Git Submodule
+-------------
+
+To checkout this repo including submodules run `git clone --recursive <url to this repo>`
+git submodule foreach 'git checkout master'

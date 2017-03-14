@@ -26,6 +26,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         provider.group        = servergroup
       end
 
+      serverconfig['git_repos'].each do |repo|
+        system("git clone -b #{repo['branch']} #{repo['target']} ./#{repo['path']}")
+#        config.vm.synced_folder ".#{repo['path']}/", repo['path']
+      end
       serverconfig['synced_folders'].each do |synced_folder|
         config.vm.synced_folder synced_folder['src'], synced_folder['dest']
       end

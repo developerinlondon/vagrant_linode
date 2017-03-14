@@ -26,13 +26,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         provider.group        = servergroup
       end
 
-      serverconfig['git_repos'].each do |repo|
-        system("git clone -b #{repo['branch']} #{repo['target']} ./#{repo['path']}")
-#        config.vm.synced_folder ".#{repo['path']}/", repo['path']
+      # clone the git repo locally and mount it on the host.
+      unless serverconfig['git_repos'].nil?
+        serverconfig['git_repos'].each do |repo|
+          hostpath = "./#{repo['path']}"
+          unless (Dir.exists?(hostpath)) && (Dir.entries(hostpath) != ['.', '..'])
+            system("git clone -b #{repo['branch']} #{repo['target']} #{hostpath}")
+          else
+            puts "Directory #{hostpath} already exists and/or is not empty. So skipping cloning it again."
+          end
+          config.vm.synced_folder hostpath, repo['path']
+        end
       end
-      serverconfig['synced_folders'].each do |synced_folder|
-        config.vm.synced_folder synced_folder['src'], synced_folder['dest']
+
+      # mount any synced folders
+      unless serverconfig['synced_folders'].nil?
+        serverconfig['synced_folders'].each do |synced_folder|
+          config.vm.synced_folder synced_folder['src'], synced_folder['dest']
+        end
       end
+      
       config.vm.hostname = "#{servername}.#{servergroup}"
 
       config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS

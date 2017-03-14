@@ -5,11 +5,13 @@ live:
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: ./.ssh/id_rsa.key
+    # synced_folders:
+    # - src: saltstack
+    #   dest: /saltstacksrv/
     git_repos:
     - target: git@bitbucket.org:sdsgmbh/saltstack.git
       path: /saltstack
       branch: master
-    salt_minion_config: salt/minion.conf
     salt_run_highstate: false
     salt_masterless: true
     salt_install_master: false

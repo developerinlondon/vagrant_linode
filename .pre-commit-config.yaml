@@ -19,7 +19,7 @@
   - id: check-symlinks
   - id: detect-private-key
 - repo: git://github.com/detailyang/pre-commit-shell
-  sha: 1fdffa0434cde2b87f19ad258201d3e81481af5f
+  sha: a38692fd3e36bab39d523f80c90222b92f2b05ef
   hooks:
   - id: shell-lint
     args:

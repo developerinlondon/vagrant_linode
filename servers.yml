@@ -12,7 +12,7 @@ live:
     - target: git@bitbucket.org:sdsgmbh/saltstack.git
       path: /saltstack
       branch: master
-    salt_run_highstate: false
+    salt_run_highstate: true
     salt_masterless: true
     salt_install_master: false
     salt_log_level: info

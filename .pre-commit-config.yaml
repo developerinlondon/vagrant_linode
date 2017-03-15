@@ -11,9 +11,9 @@
   hooks:
   - id: check-yaml
   - id: end-of-file-fixer
-    files: \.(asciidoc|adoc|conf|coffee|cpp|css|c|ejs|erb|groovy|h|haml|hh|hpp|hxx|html|in|j2|jade|json|js|less|markdown|md|ml|mli|pp|py|rb|rs|R|scala|scss|sh|slim|sls|tex|tmpl|ts|txt|yaml|yml)$
+    files: \.(asciidoc|adoc|conf|coffee|cpp|css|c|ejs|erb|groovy|h|haml|hh|hpp|hxx|html|in|j2|jade|json|js|less|markdown|md|ml|mli|pp|py|rb|rs|R|scala|scss|sh|slim|sls|tex|tmpl|ts|txt|yaml|yml)|Vagrantfile|Gemfile|Rakefile$
   - id: trailing-whitespace
-    files: \.(asciidoc|adoc|conf|coffee|cpp|css|c|ejs|erb|groovy|h|haml|hh|hpp|hxx|html|in|j2|jade|json|js|less|markdown|md|ml|mli|pp|py|rb|rs|R|scala|scss|sh|slim|sls|tex|tmpl|ts|txt|yaml|yml)$
+    files: \.(asciidoc|adoc|conf|coffee|cpp|css|c|ejs|erb|groovy|h|haml|hh|hpp|hxx|html|in|j2|jade|json|js|less|markdown|md|ml|mli|pp|py|rb|rs|R|scala|scss|sh|slim|sls|tex|tmpl|ts|txt|yaml|yml)|Vagrantfile|Gemfile|Rakefile$
   - id: check-added-large-files
   - id: check-merge-conflict
   - id: check-symlinks

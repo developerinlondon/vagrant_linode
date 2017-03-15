@@ -4,6 +4,7 @@ Run the following:
 
 git clone --recursive git@bitbucket.org:sdsgmbh/provisioner_linode_vagrant.git
 cd provisioner_linode_vagrant
+gem install bundler
 bundle
 rake
 

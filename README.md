@@ -3,7 +3,7 @@ First Clone
 Run the following:
 
 git clone --recursive git@bitbucket.org:sdsgmbh/provisioner_linode_vagrant.git
-git submodule foreach 'git checkout master'
+git submodule foreach -q --recursive 'branch="$(git config -f ../.gitmodules submodule.$name.branch)"; git checkout $branch; pre-commit install'
 git crypt unlock
 pre-commit install
 

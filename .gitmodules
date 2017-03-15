@@ -2,3 +2,4 @@
 	path = saltstack
 	url = git@bitbucket.org:sdsgmbh/saltstack.git
 	branch = master
+	fetchRecurseSubmodules = true

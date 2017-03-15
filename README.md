@@ -1,3 +1,12 @@
+First Clone
+-----------
+Run the following:
+
+git clone --recursive git@bitbucket.org:sdsgmbh/provisioner_linode_vagrant.git
+git submodule foreach 'git checkout master'
+git crypt unlock
+pre-commit install
+
 Setup
 -----
 

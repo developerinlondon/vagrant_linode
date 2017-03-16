@@ -1,11 +1,8 @@
-file_client: local
-
-## Look locally for files
-#master: 127.0.0.1
-
 file_roots:
   base:
     - /saltstack/salt
+
+auto_accept: true
 
 fileserver_backend:
   - git

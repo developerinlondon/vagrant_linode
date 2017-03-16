@@ -24,3 +24,4 @@
   - id: shell-lint
     args:
     - --shell=bash
+    - -e SC2164

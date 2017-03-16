@@ -4,7 +4,7 @@ live:
     distribution: 'Ubuntu 16.04 LTS'
     datacenter: frankfurt
     plan: 'Linode 1024'
-    private_key_path: ./.ssh/id_rsa
+    private_key_path: /Users/khan/.ssh/id_rsa
     synced_folders:
     - src: .
       dest: /vagrant

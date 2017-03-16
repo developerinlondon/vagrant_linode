@@ -17,7 +17,7 @@
   - id: check-added-large-files
   - id: check-merge-conflict
   - id: check-symlinks
-  - id: detect-private-key
+#  - id: detect-private-key
 - repo: git://github.com/detailyang/pre-commit-shell
   sha: a38692fd3e36bab39d523f80c90222b92f2b05ef
   hooks:

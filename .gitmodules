@@ -3,3 +3,8 @@
 	url = git@bitbucket.org:sdsgmbh/saltstack.git
 	branch = master
 	fetchRecurseSubmodules = true
+[submodule "vagrant_status"]
+	path = .vagrant
+	url = git@bitbucket.org:sdsgmbh/provisioner_linode_vagrant_status.git
+	branch = master
+	fetchRecurseSubmodules = true

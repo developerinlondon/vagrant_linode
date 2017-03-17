@@ -1,6 +1,6 @@
 file_roots:
   base:
-    - /saltstack/salt
+    - /srv/salt
 
 auto_accept: true
 
@@ -9,13 +9,15 @@ fileserver_backend:
   - roots
 
 gitfs_remotes:
-  - https://github.com/saltstack-formulas/apache-formula
-  - https://github.com/saltstack-formulas/memcached-formula
+  - https://github.com/saltstack-formulas/nginx-formula
+
+gitfs_env_whitelist:
+  - base
 
 startup_states: 'highstate'
 
 pillar_roots:
   base:
-    - /saltstack/pillar
+    - /srv/pillar
 
 state_output: mixed

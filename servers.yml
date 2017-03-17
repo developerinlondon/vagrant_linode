@@ -20,18 +20,18 @@ live:
     salt_verbose: true
     salt_colorize: true
 dev:
-  nayeem:
-   # distribution: 'Ubuntu 16.04 LTS'
+  n:
+    #distribution: 'Ubuntu 16.04 LTS'
+    imageid: 1667220
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: .ssh/id_rsa
-    imageid: 1667220
     synced_folders:
     - src: .
       dest: /vagrant
       disabled: true
     - src: saltstack
-      dest: /saltstack
+      dest: /srv
       disabled: false
     salt_run_highstate: true
     salt_masterless: false

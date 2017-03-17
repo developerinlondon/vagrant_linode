@@ -26,9 +26,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         provider.plan         = serverconfig['plan']
         provider.label        = "#{servername.gsub(/\./,'_')}_#{servergroup.gsub(/\./,'_')}"
         provider.group        = servergroup
-        provider.distribution = serverconfig['distribution'] unless serverconfig['distribution'].nil?
+#        provider.distribution = serverconfig['distribution'] unless serverconfig['distribution'].nil?
         provider.image        = serverconfig['image'] unless serverconfig['image'].nil?
-        provider.imageid      = serverconfig['imageid']
+        provider.imageid      = serverconfig['imageid'] unless serverconfig['imageid'].nil?
       end
 
       # mount any synced folders

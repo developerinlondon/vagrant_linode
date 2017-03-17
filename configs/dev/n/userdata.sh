@@ -4,10 +4,10 @@ HOSTNAME=$(cat /etc/hostname)
 # fix hosts entry to have the new hostname
 sed -i -e "s/127.0.0.1\slocalhost$/127.0.0.1 localhost $HOSTNAME/g" /etc/hosts
 
-# apt-get update -y
+#apt-get update -y
 
 # the following are needed for gitfs
-# apt-get install vim python-pip -y
+#apt-get install vim python-pip -y
 # pip install --upgrade pip
 # pip install pyyaml
 
@@ -26,7 +26,8 @@ sed -i -e "s/127.0.0.1\slocalhost$/127.0.0.1 localhost $HOSTNAME/g" /etc/hosts
 # cd ../
 
 # # install necessary packages
-# apt-get install -y salt-api salt-cloud salt-master  salt-minion salt-ssh salt-syndic
+#apt-get install -y salt-api salt-cloud salt-master  salt-minion salt-ssh salt-syndic
 
 salt-key -A -y
-# salt-call state.highstate
+salt-key -y -d ubuntu.members.linode.com
+salt-call state.highstate

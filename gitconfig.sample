@@ -1,0 +1,25 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@bitbucket.org:sdsgmbh/provisioner_linode_vagrant.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "review"]
+	pushurl = git@bitbucket.org:sdsgmbh/provisioner_linode_vagrant.git
+	push = HEAD:refs/for/master
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[submodule "saltstack"]
+	url = git@bitbucket.org:sdsgmbh/saltstack.git
+[filter "git-crypt"]
+	smudge = \"git-crypt\" smudge
+	clean = \"git-crypt\" clean
+	required = true
+[diff "git-crypt"]
+	textconv = \"git-crypt\" diff
+

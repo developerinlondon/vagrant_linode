@@ -9,7 +9,7 @@ fileserver_backend:
   - roots
 
 gitfs_remotes:
-  - https://github.com/saltstack-formulas/nginx-formula
+  - https://github.com/saltstack-formulas/apache-formula
   - https://github.com/saltstack-formulas/memcached-formula
 
 startup_states: 'highstate'

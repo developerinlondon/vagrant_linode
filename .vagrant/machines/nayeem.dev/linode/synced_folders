@@ -1,1 +1,1 @@
-{"rsync":{"/saltstack":{"disabled":false,"guestpath":"/saltstack","hostpath":"/Users/nsm/Documents/code/sds/core/provisioner_linode_vagrant/saltstack","__vagrantfile":true,"owner":"root","group":"root"}}}
+{"rsync":{"/saltstack":{"disabled":false,"guestpath":"/saltstack","hostpath":"/Users/nayeems/code/sds/coreserver/provisioner_linode_vagrant/saltstack","__vagrantfile":true,"owner":"root","group":"root"}}}

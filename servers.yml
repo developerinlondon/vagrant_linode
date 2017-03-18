@@ -1,8 +1,8 @@
 ---
 live:
   web.sds:
-#    distribution: 'Ubuntu 16.04 LTS'
-    imageid: 1667220
+    distribution: 'Ubuntu 16.04 LTS'
+#    imageid: 1667220
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: .ssh/id_rsa

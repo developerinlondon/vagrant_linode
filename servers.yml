@@ -13,12 +13,6 @@ live:
     - src: saltstack
       dest: /saltstack
       disabled: false
-    salt_run_highstate: true
-    salt_masterless: true
-    salt_install_master: false
-    salt_log_level: info
-    salt_verbose: true
-    salt_colorize: true
 dev:
   n:
     #distribution: 'Ubuntu 16.04 LTS'
@@ -33,9 +27,17 @@ dev:
     - src: saltstack
       dest: /srv
       disabled: false
-    salt_run_highstate: true
-    salt_masterless: false
-    salt_install_master: false
-    salt_log_level: info
-    salt_verbose: true
-    salt_colorize: true
+image:
+  salt:
+    distribution: 'Ubuntu 16.04 LTS'
+    #imageid: 1667220
+    datacenter: frankfurt
+    plan: 'Linode 1024'
+    private_key_path: .ssh/id_rsa
+    synced_folders:
+    - src: .
+      dest: /vagrant
+      disabled: true
+    - src: saltstack
+      dest: /srv
+      disabled: false

@@ -1,0 +1,23 @@
+file_roots:
+  base:
+    - /srv/salt
+
+auto_accept: true
+
+fileserver_backend:
+  - git
+  - roots
+
+# gitfs_remotes:
+#   - https://github.com/saltstack-formulas/nginx-formula
+
+# gitfs_env_whitelist:
+#  - base
+
+startup_states: 'highstate'
+
+pillar_roots:
+  base:
+    - /srv/pillar
+
+state_output: mixed

@@ -1,6 +1,7 @@
 ---
 live:
   web.sds:
+    provider: linode
     distribution: 'Ubuntu 16.04 LTS'
 #    imageid: 1667220
     datacenter: frankfurt
@@ -15,6 +16,7 @@ live:
       disabled: false
 dev:
   n:
+    provider: linode
     #distribution: 'Ubuntu 16.04 LTS'
     imageid: 1667220
     datacenter: frankfurt
@@ -29,6 +31,7 @@ dev:
       disabled: false
 image:
   salt:
+    provider: linode
     distribution: 'Ubuntu 16.04 LTS'
     #imageid: 1667220
     datacenter: frankfurt
@@ -41,3 +44,20 @@ image:
     - src: saltstack
       dest: /srv
       disabled: false
+  salt.sw:
+    provider: scaleway
+    image: 3a1b0dd8-92e1-4ba2-aece-eea8e9d07e32
+    region: par1
+    tags:
+      - salt
+      - image
+    commercial_type: C1
+    private_key_path: .ssh/id_rsa
+    synced_folders:
+    - src: .
+      dest: /vagrant
+      disabled: true
+    - src: saltstack
+      dest: /srv
+      disabled: false
+    #image:

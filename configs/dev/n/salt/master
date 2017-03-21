@@ -9,7 +9,9 @@ fileserver_backend:
   - roots
 
 gitfs_remotes:
-  - https://github.com/saltstack-formulas/nginx-formula
+  - https://github.com/saltstack-formulas/apache-formula
+  - https://github.com/saltstack-formulas/php-formula
+  - https://github.com/saltstack-formulas/wordpress-formula
 
 gitfs_env_whitelist:
   - base

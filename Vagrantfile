@@ -9,8 +9,7 @@ require 'pp'
 #require 'colorize'
 
 # install dependant plugins
-required_plugins = %w( vagrant-linode vagrant-hosts vagrant-share vagrant-scaleway )
-required_plugins.each do |plugin|
+%w( vagrant-linode vagrant-hosts vagrant-share vagrant-scaleway ).each do |plugin|
     exec "vagrant plugin install #{plugin};vagrant #{ARGV.join(" ")}" unless Vagrant.has_plugin? plugin || ARGV[0] == 'plugin'
 end
 

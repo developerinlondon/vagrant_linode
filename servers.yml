@@ -57,11 +57,11 @@ image:
     - src: .
       dest: /vagrant
       disabled: true
-    - src: saltstack
+    - src: ./saltstack
       dest: /srv
       disabled: false
-    scripts:
-      - { name: initialize, src: userdata.sh }
+    # scripts:
+    #   - { name: initialize, src: userdata.sh }
   salt.scaleway:
     provider: scaleway
     image: 3a1b0dd8-92e1-4ba2-aece-eea8e9d07e32
@@ -82,6 +82,6 @@ image:
     - src: saltstack
       dest: /srv
       disabled: false
-    scripts:
-      - { name: initialize, src: userdata.sh }
+    # scripts:
+    #   - { name: initialize, src: userdata.sh }
     #image:

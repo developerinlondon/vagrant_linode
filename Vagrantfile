@@ -71,12 +71,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
 
         # run the scripts
-        # server.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
-        # unless serverconfig['scripts'].nil?
-        #   serverconfig['scripts'].each do |script|
-        #     server.vm.provision script['name'], type: :shell, path: "configs/#{servergroup}/#{servername}/#{script['src']}"
-        #   end
-        # end
+        server.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
+        unless serverconfig['scripts'].nil?
+          serverconfig['scripts'].each do |script|
+            server.vm.provision script['name'], type: :shell, path: "configs/#{servergroup}/#{servername}/#{script['src']}"
+          end
+        end
 
       end
     end

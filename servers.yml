@@ -7,6 +7,10 @@ live:
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: .ssh/id_rsa
+    files:
+      - { src: salt/master,    dest: /etc/salt/master }
+      - { src: salt/minion,    dest: /etc/salt/minion }
+      - { src: salt/minion_id, dest: /etc/salt/minion_id }
     synced_folders:
     - src: .
       dest: /vagrant
@@ -14,6 +18,8 @@ live:
     - src: saltstack
       dest: /saltstack
       disabled: false
+    scripts:
+      - { name: initialize, src: userdata.sh }
 dev:
   n:
     provider: linode
@@ -22,6 +28,10 @@ dev:
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: .ssh/id_rsa
+    files:
+      - { src: salt/master,    dest: /etc/salt/master }
+      - { src: salt/minion,    dest: /etc/salt/minion }
+      - { src: salt/minion_id, dest: /etc/salt/minion_id }
     synced_folders:
     - src: .
       dest: /vagrant
@@ -29,6 +39,8 @@ dev:
     - src: saltstack
       dest: /srv
       disabled: false
+    scripts:
+      - { name: initialize, src: userdata.sh }
 image:
   salt:
     provider: linode
@@ -37,6 +49,10 @@ image:
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: .ssh/id_rsa
+    files:
+      - { src: salt/master,    dest: /etc/salt/master }
+      - { src: salt/minion,    dest: /etc/salt/minion }
+      - { src: salt/minion_id, dest: /etc/salt/minion_id }
     synced_folders:
     - src: .
       dest: /vagrant
@@ -44,6 +60,8 @@ image:
     - src: saltstack
       dest: /srv
       disabled: false
+    scripts:
+      - { name: initialize, src: userdata.sh }
   salt.sw:
     provider: scaleway
     image: 3a1b0dd8-92e1-4ba2-aece-eea8e9d07e32
@@ -53,6 +71,10 @@ image:
       - image
     commercial_type: C1
     private_key_path: .ssh/id_rsa
+    files:
+      - { src: salt/master,    dest: /etc/salt/master }
+      - { src: salt/minion,    dest: /etc/salt/minion }
+      - { src: salt/minion_id, dest: /etc/salt/minion_id }
     synced_folders:
     - src: .
       dest: /vagrant
@@ -60,4 +82,6 @@ image:
     - src: saltstack
       dest: /srv
       disabled: false
+    scripts:
+      - { name: initialize, src: userdata.sh }
     #image:

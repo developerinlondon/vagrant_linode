@@ -61,14 +61,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           end
         end
 
-        # copy salt files
-        server.vm.provision "file", source: "configs/#{servergroup}/#{servername}/salt/master", destination: "/etc/salt/master" if File.exist? "configs/#{servergroup}/#{servername}/salt/master"
-        server.vm.provision "file", source: "configs/#{servergroup}/#{servername}/salt/minion", destination: "/etc/salt/minion" if File.exist? "configs/#{servergroup}/#{servername}/salt/minion"
-        server.vm.provision "file", source: "configs/#{servergroup}/#{servername}/salt/minion_id", destination: "/etc/salt/minion_id" if File.exist? "configs/#{servergroup}/#{servername}/salt/minion_id"
+        # copy files
+        unless serverconfig['files'].nil?
+          serverconfig['files'].each do |file|
+            server.vm.provision "file", source: "configs/#{servergroup}/#{servername}/#{file['src']}", destination: "#{file['dest']}" if File.exist? "configs/#{servergroup}/#{servername}/#{file['src']}"
+          end
+        end
 
-
+        # run the scripts
         server.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
-        server.vm.provision "initialize", type: :shell, path: "configs/#{servergroup}/#{servername}/userdata.sh"
+        unless serverconfig['scripts'].nil?
+          serverconfig['scripts'].each do |script|
+            server.vm.provision script['name'], type: :shell, path: "configs/#{servergroup}/#{servername}/#{script['src']}"
+          end
+        end
+
       end
     end
   end

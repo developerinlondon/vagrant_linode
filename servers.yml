@@ -62,7 +62,7 @@ image:
       disabled: false
     scripts:
       - { name: initialize, src: userdata.sh }
-  salt.sw:
+  salt.scaleway:
     provider: scaleway
     image: 3a1b0dd8-92e1-4ba2-aece-eea8e9d07e32
     region: par1

@@ -15,13 +15,15 @@ required_plugins.each do |plugin|
 end
 
 servergroups = YAML.load_file(File.join(File.dirname(__FILE__), 'servers.yml'))
-
+host_port = 2222
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   servergroups.each do |servergroup, servers|
     servers.each do |servername, serverconfig|
       secrets = YAML.load_file(File.join(File.dirname(__FILE__),"configs/#{servergroup}/#{servername}/secrets.yml"))
       vm_name = "#{servername}.#{servergroup}"
       config.vm.define vm_name do |server|
+        host_port = host_port + 1
+        server.vm.network :forwarded_port, guest: 22, host: host_port, id: 'ssh'
         if serverconfig['provider'] == 'linode' then
           server.vm.provider :linode do |provider, override|
             override.ssh.private_key_path = serverconfig['private_key_path']
@@ -69,12 +71,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
 
         # run the scripts
-        server.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
-        unless serverconfig['scripts'].nil?
-          serverconfig['scripts'].each do |script|
-            server.vm.provision script['name'], type: :shell, path: "configs/#{servergroup}/#{servername}/#{script['src']}"
-          end
-        end
+        # server.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'" # needed for ubuntu 16.04 LTS
+        # unless serverconfig['scripts'].nil?
+        #   serverconfig['scripts'].each do |script|
+        #     server.vm.provision script['name'], type: :shell, path: "configs/#{servergroup}/#{servername}/#{script['src']}"
+        #   end
+        # end
 
       end
     end

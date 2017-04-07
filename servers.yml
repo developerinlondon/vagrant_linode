@@ -21,6 +21,14 @@ live:
     scripts:
       - { name: initialize, src: userdata.sh }
 dev:
+  virtualbox:
+    provider: virtualbox
+    memory: 512
+    cpus: 2
+    box: geerlingguy/ubuntu1604
+    vboxmanage:
+      - { name: modifyvm, setting: "--natdnshostresolver1", value: 'on' }
+      - { name: modifyvm, setting: "--ioapic",              value: 'on' }
   n:
     provider: linode
     #distribution: 'Ubuntu 16.04 LTS'

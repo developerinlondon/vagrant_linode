@@ -18,7 +18,7 @@ host_port = 2222
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   servergroups.each do |servergroup, servers|
     servers.each do |servername, serverconfig|
-      secrets = YAML.load_file(File.join(File.dirname(__FILE__),"configs/#{servergroup}/#{servername}/secrets.yml"))
+      secrets = YAML.load_file(File.join(File.dirname(__FILE__),"configs/#{servergroup}/#{servername}/secrets.yml")) if File.exist? "configs/#{servergroup}/#{servername}/secrets.yml"
       vm_name = "#{servername}.#{servergroup}"
       config.vm.define vm_name do |server|
         host_port = host_port + 1
@@ -51,6 +51,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             provider.image           = serverconfig['image']
           end
           server.vm.hostname = "#{servername}.#{servergroup}"
+        elsif serverconfig['provider'] == 'virtualbox' then
+          server.vm.provider :virtualbox do |provider, override|
+            override.vm.box          = serverconfig['box']
+            override.ssh.insert_key  = false
+            override.vm.define :jenkins do |jenkins|
+            end
+            provider.name            = "#{servername}.#{servergroup}"
+            provider.memory = serverconfig['memory']
+            provider.cpus = serverconfig['cpus']
+            unless serverconfig['vboxmanage'].nil?
+              serverconfig['vboxmanage'].each do |customize|
+                provider.customize [customize['name'], :id, customize['setting'], customize['value']]
+              end
+            end
+          end
         else
           exit 'Please pass a provider'
         end

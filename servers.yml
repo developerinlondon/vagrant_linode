@@ -25,7 +25,7 @@ dev:
     provider: virtualbox
     memory: 512
     cpus: 2
-    box: geerlingguy/ubuntu1604
+    box: kaorimatz/ubuntu-16.04-amd64
     vboxmanage:
       - { name: modifyvm, setting: "--natdnshostresolver1", value: 'on' }
       - { name: modifyvm, setting: "--ioapic",              value: 'on' }

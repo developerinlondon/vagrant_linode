@@ -55,8 +55,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           server.vm.provider :virtualbox do |provider, override|
             override.vm.box          = serverconfig['box']
             override.ssh.insert_key  = false
-            override.vm.define :jenkins do |jenkins|
-            end
+            override.vm.network serverconfig['network_type'], ip: serverconfig['ip'], bridge: serverconfig['bridge']
+            override.vm.hostname     = serverconfig['hostname']
+
             provider.name            = "#{servername}.#{servergroup}"
             provider.memory = serverconfig['memory']
             provider.cpus = serverconfig['cpus']
@@ -92,6 +93,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           end
         end
 
+        unless serverconfig['ansible'].nil?
+          unless serverconfig['ansible']['playbooks'].nil?
+            serverconfig['ansible']['playbooks'].each do |playbook|
+              server.vm.provision "ansible" do |ansible|
+                ansible.playbook = playbook['name']
+                ansible.inventory_path = playbook['inventory']
+                ansible.sudo = true
+              end
+            end
+          end
+        end
       end
     end
   end

@@ -7,28 +7,22 @@ live:
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: .ssh/id_rsa
-    files:
-      - { src: salt/master,    dest: /etc/salt/master }
-      - { src: salt/minion,    dest: /etc/salt/minion }
-      - { src: salt/minion_id, dest: /etc/salt/minion_id }
-    synced_folders:
-    - src: .
-      dest: /vagrant
-      disabled: true
-    - src: saltstack
-      dest: /saltstack
-      disabled: false
-    scripts:
-      - { name: initialize, src: userdata.sh }
 dev:
   virtualbox:
     provider: virtualbox
     memory: 512
     cpus: 2
     box: kaorimatz/ubuntu-16.04-amd64
+    hostname: jenkins
+    ip: "192.168.33.55"
+    bridge: "en1: Wi-Fi (AirPort)"
+    network_type: public_network
     vboxmanage:
       - { name: modifyvm, setting: "--natdnshostresolver1", value: 'on' }
       - { name: modifyvm, setting: "--ioapic",              value: 'on' }
+    ansible:
+      playbooks:
+        - { name: ansible/playbook.yml, inventory: ansible/inventory/virtualbox/dev.ini }
   n:
     provider: linode
     #distribution: 'Ubuntu 16.04 LTS'
@@ -36,19 +30,16 @@ dev:
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: .ssh/id_rsa
-    files:
-      - { src: salt/master,    dest: /etc/salt/master }
-      - { src: salt/minion,    dest: /etc/salt/minion }
-      - { src: salt/minion_id, dest: /etc/salt/minion_id }
-    synced_folders:
-    - src: .
-      dest: /vagrant
-      disabled: true
-    - src: saltstack
-      dest: /srv
-      disabled: false
-    scripts:
-      - { name: initialize, src: userdata.sh }
+    # files:
+    #   - { src: salt/master,    dest: /etc/salt/master }
+    #   - { src: salt/minion,    dest: /etc/salt/minion }
+    #   - { src: salt/minion_id, dest: /etc/salt/minion_id }
+    # synced_folders:
+    # - src: .
+    #   dest: /vagrant
+    #   disabled: true
+    # scripts:
+    #   - { name: initialize, src: userdata.sh }
 image:
   salt:
     provider: linode
@@ -57,17 +48,6 @@ image:
     datacenter: frankfurt
     plan: 'Linode 1024'
     private_key_path: .ssh/id_rsa
-    files:
-      - { src: salt/master,    dest: /etc/salt/master }
-      - { src: salt/minion,    dest: /etc/salt/minion }
-      - { src: salt/minion_id, dest: /etc/salt/minion_id }
-    synced_folders:
-    - src: .
-      dest: /vagrant
-      disabled: true
-    - src: ./saltstack
-      dest: /srv
-      disabled: false
     # scripts:
     #   - { name: initialize, src: userdata.sh }
   salt.scaleway:
@@ -79,17 +59,10 @@ image:
       - image
     commercial_type: C1
     private_key_path: .ssh/id_rsa
-    files:
-      - { src: salt/master,    dest: /etc/salt/master }
-      - { src: salt/minion,    dest: /etc/salt/minion }
-      - { src: salt/minion_id, dest: /etc/salt/minion_id }
-    synced_folders:
-    - src: .
-      dest: /vagrant
-      disabled: true
-    - src: saltstack
-      dest: /srv
-      disabled: false
+    # synced_folders:
+    # - src: .
+    #   dest: /vagrant
+    #   disabled: true
     # scripts:
     #   - { name: initialize, src: userdata.sh }
     #image:

@@ -1,0 +1,13 @@
+---
+- hosts: jenkins_servers
+  gather_facts: yes
+
+  vars_files:
+    - main.yml
+
+  roles:
+    - geerlingguy.firewall
+    - geerlingguy.ntp
+    - geerlingguy.git
+    - geerlingguy.java
+    - geerlingguy.jenkins
